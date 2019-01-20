@@ -40,7 +40,7 @@ for i in languages:
 # print(my_abs(9), my_abs(-9))
 
 ''' 切片 '''
-languages = ['C', 'C++', 'Java', "php", "python"]
+# languages = ['C', 'C++', 'Java', "php", "python"]
 # print(languages[1:4])  # 取索引1-3的值，不包括4
 # print(list(range(10)))
 
@@ -54,32 +54,59 @@ languages = ['C', 'C++', 'Java', "php", "python"]
 
 ''' generator生成器 '''
 
-
 # g = (x for x in range(10))
 # for item in g:
 #     print(item)
 
 
 # 定义一个生成器
-def fib(max):
-    n, a, b = 0, 0, 1
-    while n < max:
-        yield b
-        a, b = b, a + b
-        n = n + 1
-    return 'done'
+# def fib(max):
+#     n, a, b = 0, 0, 1
+#     while n < max:
+#         yield b
+#         a, b = b, a + b
+#         n = n + 1
+#     return 'done'
 
 
-g2 = fib(6)
+# g2 = fib(6)
 # for循环生成器拿不到return值'done'
 # for item in g2:
 #     print(item)
 
 # 通过捕获异常来获取return值
-while True:
-    try:
-        x = next(g2)
-        print(x)
-    except StopIteration as e:
-        print('Generator return value:', e.value)
-        break
+# while True:
+#     try:
+#         x = next(g2)
+#         print(x)
+#     except StopIteration as e:
+#         print('Generator return value:', e.value)
+#         break
+
+''' lambda '''
+# print(list(map(lambda x: x * x, range(10))))
+
+''' 面向对象 '''
+
+# class Student(object):
+#     def __init__(self, name, age):
+#         self.__name = name
+#         self.__age = age
+#
+#     def print_info(self):
+#         print('%s->%s' % (self.__name, self.__age))
+#
+#
+# stu = Student('jack', 18)
+# stu.print_info()
+
+''' io操作 '''
+# with open('D:/test.txt', 'r') as f:
+#     with open('D:/test1.txt', 'a+') as t:
+#         for line in f.readlines():
+#             t.writelines(line)
+
+''' os '''
+# print(os.name)
+# print(os.path.abspath('.'))
+# print([x for x in os.listdir('d:/')])
