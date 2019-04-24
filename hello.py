@@ -5,6 +5,7 @@ while b < 1000:
     print(b, end=',')
     a, b = b, a + b
 """
+import json
 import os
 from collections import Iterable
 
@@ -110,3 +111,9 @@ for i in languages:
 # print(os.name)
 # print(os.path.abspath('.'))
 # print([x for x in os.listdir('d:/')])
+
+''' 序列化 '''
+# d = dict(name='jack', age='18', sex='man')
+# jsonStr = json.dumps(d)
+# print(jsonStr)
+# print(json.loads(jsonStr))
