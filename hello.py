@@ -7,7 +7,10 @@ while b < 1000:
 """
 import json
 import os
-from collections import Iterable
+from datetime import datetime, timedelta
+
+import mysql.connector
+import requests
 
 """
 for循环
@@ -111,6 +114,71 @@ for i in languages:
 # print(os.name)
 # print(os.path.abspath('.'))
 # print([x for x in os.listdir('d:/')])
+
+''' datetime '''
+# print(datetime.now())
+# dt = datetime(2019, 1, 23, 10, 40)
+# ts = dt.timestamp()
+# print(dt, ts, datetime.fromtimestamp(ts), dt + timedelta(days=1))
+
+''' namedtuple '''
+# Point = namedtuple('Point', ['x', 'y'])
+# p = Point(1, 2)
+# print(p, p.x, p.y)
+
+''' Counter '''
+# c = Counter()
+# for ch in 'landing guy':
+#     c[ch] = c[ch] + 1
+# print(c)
+
+''' requests '''
+# r = requests.get('https://www.baidu.com/')
+# print(r.status_code)
+# params = {'username': 'python1', 'password': 'python1'}
+# resp = requests.post('http://192.168.5.114:8084/addUser', json=params)
+# print(resp.json())
+
+''' 连接mysql '''
+# connect = mysql.connector.connect(user='root', password='root', database='tw')
+# cursor = connect.cursor()
+# cursor.execute('select * from user where username=%s', ('landinguy',))
+# result = cursor.fetchall()
+# print(result)
+# cursor.close()
+# connect.close()
+
+from sqlalchemy import Column, String, create_engine, Integer
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+''' SQLAlchemy '''
+# 创建对象的基类:
+# Base = declarative_base()
+#
+#
+# class User(Base):
+#     # 表的名字:
+#     __tablename__ = 'user'
+#
+#     id = Column(Integer, primary_key=True, autoincrement=True)
+#     username = Column(String(20))
+#     password = Column(String(20))
+#
+#
+# # 初始化数据库连接:
+# engine = create_engine('mysql+mysqlconnector://root:root@localhost:3306/tw')
+# # 创建DBSession类型:
+# DBSession = sessionmaker(bind=engine)
+# # 创建session对象:
+# session = DBSession()
+#
+# user = User(username='python3', password='python3')
+# session.add(user)
+# session.commit()
+# session.close()
+
+
 
 ''' 序列化 '''
 # d = dict(name='jack', age='18', sex='man')
