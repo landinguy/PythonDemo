@@ -5,12 +5,10 @@ while b < 1000:
     print(b, end=',')
     a, b = b, a + b
 """
-import json
-import os
-from datetime import datetime, timedelta
 
-import mysql.connector
-import requests
+# import mysql.connector
+# import requests
+from collections import Counter
 
 """
 for循环
@@ -71,8 +69,8 @@ for i in languages:
 #         a, b = b, a + b
 #         n = n + 1
 #     return 'done'
-
-
+#
+#
 # g2 = fib(6)
 # for循环生成器拿不到return值'done'
 # for item in g2:
@@ -148,9 +146,9 @@ for i in languages:
 # cursor.close()
 # connect.close()
 
-from sqlalchemy import Column, String, create_engine, Integer
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, String, create_engine, Integer
+# from sqlalchemy.orm import sessionmaker
+# from sqlalchemy.ext.declarative import declarative_base
 
 ''' SQLAlchemy '''
 # 创建对象的基类:
@@ -179,9 +177,16 @@ from sqlalchemy.ext.declarative import declarative_base
 # session.close()
 
 
-
 ''' 序列化 '''
 # d = dict(name='jack', age='18', sex='man')
 # jsonStr = json.dumps(d)
 # print(jsonStr)
 # print(json.loads(jsonStr))
+
+# import codecs
+#
+# file = codecs.open('d:\\t1.txt', 'a', 'utf-8')
+# language = ['java', 'kotlin', 'javascript', 'python', 'vue']
+# for item in language:
+#     file.write(item + '\n')
+# file.close()
