@@ -20,12 +20,13 @@ import logging.config
 #     logger.addHandler(console)
 #     # logger.addHandler(file_logger)
 #     return logger
-#
-# #
-# # if __name__ == '__main__':
-# #     log = get_logger("test")
-# #     log.info("test python logging")
+
 logging.config.fileConfig('log.conf')
 
 
 def get(): return logging.getLogger('info')
+
+
+if __name__ == '__main__':
+    log = get()
+    log.info("test python logging")
