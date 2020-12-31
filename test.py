@@ -2,6 +2,8 @@ import threading
 import time
 import turtle
 
+import requests
+
 import logger
 from db import execute, create_table, get_session
 from entity import Student
@@ -60,19 +62,39 @@ def paint():
     screen.mainloop()
 
 
+def test_request():
+    # url = 'http://www.baidu.com'
+    # url = 'https://www.amazon.com/s/query?k=电脑&page=2&qid=1609216438&ref=sr_pg_1'
+    head = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0'}
+    cookie = {
+        'session-id': '137-2269336-8203106',
+        'session-id-time': '2082787201l',
+        'csm-hit': 'tb:1AQZE02WRB3JT40EMKRT+s-S73NP6XHSXTYFJC3QM3Y|1609212123210&t:1609212123210&adb:adblk_no',
+        'ubid-main': '134-3828777-8944234',
+        'session-token': 'TW2YyjF9rmjY3rLXsyBELZrmcAgDds0xOWZl6fo7KyDEPlNV/JTmLj0JODu0UpGwKJiyJ2hOq7zGqEytdl8mXijb2fUV/Ds5R2bzO43cJs/FB2CXecxZTaU6UbdS7a1YmRp3FesTaB/EJjpKIGo6XtcMM1WvMF2KnuG2W/XLmuj+PuEjBCnzZPYqROWhFBzg',
+        'lc-main': 'en_US',
+        'skin': 'noskin',
+    }
+    url = 'https://www.amazon.com/s?k=电脑&page=3'
+    r = requests.get(url, headers=head, cookies=cookie)
+    r.encoding = 'utf-8'
+    # log.info('url#%s' % r.url)
+    # log.info('text#%s' % r.text)
+    with open('C:\\Users\\xiaoxiaofei\\Desktop\\12293.txt', 'w+', encoding='utf8') as f:
+        f.write(r.text)
+
+
+def download(url, path='d:/'):
+    try:
+        filename = url.split('/')[-1]
+        r = requests.get(url)
+        with open(path + filename, 'wb') as f:
+            f.write(r.content)
+        log.info('图片下载成功')
+    except Exception as e:
+        log.error('下载图片失败', str(e))
+
+
 if __name__ == '__main__':
-    # create_table_sql()
-    # create_table_orm()
-
-    # session = get_session()
-
-    # s1 = Student(name='jack', age=12, address='上海徐汇区')
-    # s2 = Student(name='peter', age=13, address='上海杨浦区')
-    # s3 = Student(name='lucy', age=16, address='上海浦东新区')
-    # session.add_all([s1, s2, s3])
-    # session.commit()
-    # session.close()
-    # test_query()
-
-    # log.info('%s %s %s %s %s %s %s' % (bool(0), bool(0.0), bool(''), bool(None), bool(()), bool([]), bool({})))
-    paint()
+    test_request()
+    # pass
